@@ -19,11 +19,11 @@ app.get('/api/contact-content', (req, res) => {
   res.json(pageContent);
 });
 
-// uncomment once form submission function added
-// app.post('/api/submit-form', (req, res) => {
-//   console.log('Form submitted:', req.body);
-//   res.json({ message: 'Form submitted successfully' });
-// });
+
+app.post('/api/submit-form', (req, res) => {
+  console.log('Form submitted:', req.body);
+  res.json({ message: 'Form submitted successfully' });
+});
 
 
 

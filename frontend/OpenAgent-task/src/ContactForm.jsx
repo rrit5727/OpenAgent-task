@@ -2,8 +2,10 @@ import React, {useState} from "react";
 
 function ContactForm({ onSubmit }) {
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
+    phoneNumber: '',
     message: ''
   });
 
@@ -31,34 +33,55 @@ function ContactForm({ onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input 
-        type="text"
-        name="name"
-        placeholder="Name"
-        value={formData.name}
-        onChange={handleChange}
-        required 
-      />
-      <input 
-        type="email" 
-        name="email"
-        placeholder="Email"
-        value={formData.email}
-        onChange={handleChange}
-        required
-      />
-      <textarea 
-        name="Message" 
-        placeholder="Message"
-        value={formData.message}
-        onChange={handleChange}
-        required
-      ></textarea>
-      <button type="submit">Submit</button>
-    </form>
+    <div className="contact-form-container">
+      <p>Fill in your details and we'll be in touch right away. Or if you prefer call us on 13 24 34</p>
+      <form onSubmit={handleSubmit}>
+        <input 
+          type="text"
+          name="firstName"
+          placeholder="First name"
+          value={formData.firstName}
+          onChange={handleChange}
+          required 
+        />
+        <input 
+          type="text"
+          name="lastName"
+          placeholder="Last name"
+          value={formData.lastName}
+          onChange={handleChange}
+          required 
+        />
+        <input 
+          type="email" 
+          name="email"
+          placeholder="Email address"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <input 
+          type="number" 
+          name="phoneNumber"
+          placeholder="Phone number"
+          value={formData.phoneNumber}
+          onChange={handleChange}
+          required
+        />
+        <textarea 
+          name="Message" 
+          placeholder="What do you want to speak to us about"
+          value={formData.message}
+          onChange={handleChange}
+          required
+        ></textarea>
+        <button type="submit" className="send-message-btn">SEND MESSAGE</button>
+        <p className="terms-text">
+          By sending a message you agree to the Terms and Condition and Privacy Policy
+        </p>
+      </form>
+    </div>
   );
-
 }
 
 export default ContactForm;
