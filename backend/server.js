@@ -14,3 +14,19 @@ const pageContent = {
   address: "123 Main St, Anytown, USA 12345",
   businessHours: "Monday - Friday: 9AM - 5PM"
 };
+
+app.get('/api/contact-content', (req, res) => {
+  res.json(pageContent);
+});
+
+// uncomment once form submission function added
+// app.post('/api/submit-form', (req, res) => {
+//   console.log('Form submitted:', req.body);
+//   res.json({ message: 'Form submitted successfully' });
+// });
+
+
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
