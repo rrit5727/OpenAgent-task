@@ -18,15 +18,21 @@ function App() {
 
   return (
     <div className='app'>
-      <div className='contact-info'>
-        <h1>{pageContent.header}</h1>
-        <p>{pageContent.body}</p>
-        <p>Phone: {pageContent.phone}</p>
-        <p>Email: {pageContent.email} </p>
-        <p>Address: {pageContent.address}</p>
-        <p>Business Hours: {pageContent.businessHours}</p>
+      <h1>{pageContent.header}</h1>
+      <div className='content-wrapper'>
+        <div className='contact-info'>
+          <p>{pageContent.body}</p>
+          <h3>Here are the different ways you can contact us</h3>
+          <h4>Contact details</h4>
+          <p>Phone: {pageContent.phone}</p>
+          <p>Email: {pageContent.email} </p>
+          <h4>Postal address</h4>
+          <p>Address: {pageContent.address}</p>
+          <h4>Contact centre hours of operation</h4>
+          <p>Business Hours: {pageContent.businessHours}</p>
+        </div>
+        <ContactForm onSubmit={() => setIsSubmitted(true) } />
       </div>
-      <ContactForm onSubmit={() => setIsSubmitted(true) } />
     </div>
   )
 }
