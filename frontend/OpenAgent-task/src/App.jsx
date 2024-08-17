@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import ContactForm from './ContactForm';
+import ThankYouPage from './ThankYouPage';
 
 function App() {
   const [pageContent, setPageContent] = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     fetch('http://localhost:3001/api/contact-content')
@@ -11,6 +14,7 @@ function App() {
   }, []); 
 
   if (!pageContent) return <div>Loading...</div>;
+  if (isSubmitted) return <ThankYouPage />;
 
   return (
     <div className='app'>
@@ -22,6 +26,7 @@ function App() {
         <p>Address: {pageContent.address}</p>
         <p>Business Hours: {pageContent.businessHours}</p>
       </div>
+      <ContactForm onSubmit={() => setIsSubmitted(true) } />
     </div>
   )
 }
