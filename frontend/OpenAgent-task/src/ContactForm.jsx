@@ -61,15 +61,17 @@ function ContactForm({ onSubmit }) {
           required
         />
         <input 
-          type="number" 
+          type="text" 
           name="phoneNumber"
           placeholder="Phone number"
           value={formData.phoneNumber}
           onChange={handleChange}
+          pattern="[0-9]*"
+          inputMode="numeric"
           required
         />
         <textarea 
-          name="Message" 
+          name="message" 
           placeholder="What do you want to speak to us about"
           value={formData.message}
           onChange={handleChange}
