@@ -1,10 +1,16 @@
 const express = require('express');
 const cors = require('cors');
+const mongoose = require('mongoose');
 const app = express();
 const port = 3001;
 
+require('dotenv').config();
+require('./config/database');
+
 app.use(cors());
 app.use(express.json());
+
+
 
 const pageContent = {
   header: "Contact Us",
