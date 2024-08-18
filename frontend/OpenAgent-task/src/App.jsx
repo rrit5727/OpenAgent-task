@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 import './App.css'
 import ContactForm from './ContactForm';
+import ContactDetails from './ContactDetails';
 import ThankYouPage from './ThankYouPage';
 import SubmittedData from './SubmittedData';
 
@@ -21,24 +22,33 @@ function App() {
   if (showSubmittedData) return <SubmittedData />;
 
   return (
-    <div className='app'>
-      <h1>{pageContent.header}</h1>
-      <div className='content-wrapper'>
-        <div className='contact-info'>
-          <p>{pageContent.body}</p>
-          <h3>Here are the different ways you can contact us</h3>
-          <h4>Contact details</h4>
-          <p>Phone: {pageContent.phone}</p>
-          <p>Email: {pageContent.email} </p>
-          <h4>Postal address</h4>
-          <p>Address: {pageContent.address}</p>
-          <h4>Contact centre hours of operation</h4>
-          <p>Business Hours: {pageContent.businessHours}</p>
-        </div>
-        <ContactForm onSubmit={() => setIsSubmitted(true) } />
+    <Router>
+      <div className='app'>
+        <nav>
+          <ul>
+            <li><Link to="/">Contact Us</Link></li>
+            <li><Link to="/submitted-data">View Submitted Data</Link></li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<ContactDetails content={pageContent} />} />
+          <Route path="/thank-you" element={<ThankYouPage />} />
+          <Route path="/submitted-data" element={<SubmittedData />} />
+        </Routes>
       </div>
-    </div>
-  )
+    </Router>
+  );
+
+  function ContactPage({ content }) {
+    return (
+      <div className='content-wrapper'>
+        <ContactDetails content={content} />
+      </div>
+    );
+  }
+
 }
+
 
 export default App
