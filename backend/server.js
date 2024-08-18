@@ -38,6 +38,16 @@ app.post('/api/submit-form', async (req, res) => {
   }
 });
 
+app.get('/api/submitted-forms', async (req, res) => {
+  try {
+    const forms = await FormData.find().sort({ submittedAt: -1 });
+    res.json(forms);
+  } catch (error) {
+    console.error('Error fetching submitted forms', error);
+    res.status(500).json({ message: 'Error fetching submitted forms' });
+  }
+});
+
 
 
 app.listen(port, () => {

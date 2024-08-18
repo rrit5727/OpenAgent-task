@@ -1,11 +1,14 @@
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 import './App.css'
 import ContactForm from './ContactForm';
 import ThankYouPage from './ThankYouPage';
+import SubmittedData from './SubmittedData';
 
 function App() {
   const [pageContent, setPageContent] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showSubmittedData, setShowSubmittedData] = useState(false);
 
   useEffect(() => {
     fetch('http://localhost:3001/api/contact-content')
@@ -15,6 +18,7 @@ function App() {
 
   if (!pageContent) return <div>Loading...</div>;
   if (isSubmitted) return <ThankYouPage />;
+  if (showSubmittedData) return <SubmittedData />;
 
   return (
     <div className='app'>
