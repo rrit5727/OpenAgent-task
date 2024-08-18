@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
 const app = express();
 const port = 3001;
+const FormData = require('./models/formData');
 
 require('dotenv').config();
 require('./config/database');
@@ -26,9 +26,16 @@ app.get('/api/contact-content', (req, res) => {
 });
 
 
-app.post('/api/submit-form', (req, res) => {
-  console.log('Form submitted:', req.body);
-  res.json({ message: 'Form submitted successfully' });
+app.post('/api/submit-form', async (req, res) => {
+  try {
+    const formData = new FormData(req.body);
+    await formData.save();
+    res.json({ message: 'Form submitted successfully', id: formData._id });
+    console.log('Form submitted:', req.body);
+  } catch (error) {
+    console.error('Error saving form data', error);
+    res.status(500).json({ message: 'Error submitting form' }); 
+  }
 });
 
 
