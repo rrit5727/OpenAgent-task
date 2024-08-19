@@ -1,4 +1,4 @@
-# Dockerfile for backend
+# Dockerfile for frontend
 
 # Use the official Node.js image as a base
 FROM node:18-alpine
@@ -15,8 +15,11 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Expose port (if needed)
-EXPOSE 5000
+# Build the frontend app (adjust the build command if necessary)
+RUN npm run build
+
+# Expose the port the app runs on
+EXPOSE 3000
 
 # Start the application
 CMD ["npm", "start"]
