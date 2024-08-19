@@ -6,6 +6,7 @@ import NavBar from './NavBar';
 import ThankYouPage from './ThankYouPage';
 import SubmittedData from './SubmittedData';
 
+// comment
 function App() {
   const [pageContent, setPageContent] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
