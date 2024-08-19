@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { useNavigate } from 'react-router-dom';
 
 function ContactForm({ onSubmit }) {
   const [formData, setFormData] = useState({
@@ -8,6 +9,8 @@ function ContactForm({ onSubmit }) {
     phoneNumber: '',
     message: ''
   });
+  
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,6 +25,7 @@ function ContactForm({ onSubmit }) {
       .then(data => {
         console.log('Success:', data);
         onSubmit();
+        navigate('/thank-you');
       })
       .catch((error) => {
         console.error('Error', error);

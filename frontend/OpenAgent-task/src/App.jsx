@@ -8,6 +8,8 @@ import SubmittedData from './SubmittedData';
 
 function App() {
   const [pageContent, setPageContent] = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  
 
   useEffect(() => {
     fetch('http://localhost:3001/api/contact-content')
@@ -24,7 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             <div className='content-wrapper'>
-              <ContactDetails content={pageContent} />
+              <ContactDetails content={pageContent} setIsSubmitted={setIsSubmitted} />
             </div>
           } />
           <Route path="/thank-you" element={<ThankYouPage />} />

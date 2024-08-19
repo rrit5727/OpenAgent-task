@@ -1,6 +1,6 @@
 import ContactForm from './ContactForm';
 
-function ContactDetails({ content }) {
+function ContactDetails({ content, setIsSubmitted }) {
   return (
     <>
       <div className='content-wrapper'>
