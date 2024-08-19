@@ -3,9 +3,9 @@ import ContactForm from './ContactForm';
 function ContactDetails({ content }) {
   return (
     <>
-      <h1>{content.header}</h1>
       <div className='content-wrapper'>
         <div className='contact-info'>
+      <h1>{content.header}</h1>
           <p>{content.body}</p>
           <h3>Here are the different ways you can contact us</h3>
           <h4>Contact details</h4>
