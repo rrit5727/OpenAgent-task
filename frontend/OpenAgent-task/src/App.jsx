@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 import './App.css'
 import ContactDetails from './ContactDetails';
+import NavBar from './NavBar';
 import ThankYouPage from './ThankYouPage';
 import SubmittedData from './SubmittedData';
 
@@ -19,13 +20,7 @@ function App() {
   return (
     <Router>
       <div className='app'>
-        <nav>
-          <ul>
-            <li><Link to="/">Contact Us</Link></li>
-            <li><Link to="/submitted-data">View Submitted Data</Link></li>
-          </ul>
-        </nav>
-
+        <NavBar />
         <Routes>
           <Route path="/" element={
             <div className='content-wrapper'>
